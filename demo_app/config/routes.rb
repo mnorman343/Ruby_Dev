@@ -1,7 +1,9 @@
-SampleApp3::Application.routes.draw do
-  get "static_pages/home"
+DemoApp::Application.routes.draw do
+  resources :microposts
 
-  get "static_pages/help"
+
+  resources :users
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
