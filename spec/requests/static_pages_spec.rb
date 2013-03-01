@@ -13,17 +13,17 @@ end
 require 'spec_helper'
 
 describe "Static pages" do
-
+  let(:base_title) { "Tutorial:" }
   describe "Home page" do
 
     it "should have the content 'Sample App'" do
       visit '/static_pages/home'
-      page.should have_content('Sample App')
+      page.should have_selector('h1', :text =>'Sample App')
     end
     
     it "should have the title 'home'" do
       visit '/static_pages/home'
-      page.should have_selector('title', :text => "Tutorial: home")
+      page.should have_selector('title', :text => "#{base_title} home")
     end
   end
   
@@ -31,12 +31,12 @@ describe "Static pages" do
 
     it "should have the content 'Help'" do
       visit '/static_pages/help'
-      page.should have_content('Help')
+      page.should have_selector('h1', :text =>'Help')
     end
     
     it "should have the title 'Help'" do
       visit '/static_pages/help'
-      page.should have_selector('title', :text => "Tutorial: help")
+      page.should have_selector('title', :text => "#{base_title} Help")
     end
   end
   
@@ -44,12 +44,25 @@ describe "Static pages" do
 
     it "should have the content 'About Us'" do
       visit '/static_pages/about'
-      page.should have_content('About Us')
+      page.should have_selector('h1', :text =>'About Us')
     end
     
     it "should have the title 'about'" do
       visit '/static_pages/about'
-      page.should have_selector('title', :text => "Tutorial: about")
+      page.should have_selector('title', :text => "#{base_title} about")
+    end
+  end
+  
+    describe "Contact page" do
+
+    it "should have the content 'Contact'" do
+      visit '/static_pages/contact'
+      page.should have_selector('h1', :text =>'Contact Us')
+    end
+    
+    it "should have the title 'contact'" do
+      visit '/static_pages/contact'
+      page.should have_selector('title', :text => "#{base_title} contact")
     end
   end
 end
